@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  app:
+    # image: my-app:latest    # Replace with your image name
+    container_name: app       # Replace with your container name
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8800:8000"                           # Adjust as needed
+    volumes:
+      - .:/app                                # Mount necessary volumes
+    networks:
+      - your-network                          # Replace with your network name
+
+  dbm:
+    image: mariadb:latest                     # Change as you need
+    container_name: dbm                       # Replace with your container name
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: your_db                 # adjust as you need
+      MYSQL_USER: your_user                   # adjust as you need
+      MYSQL_PASSWORD: your_password           # adjust as you need
+      MYSQL_ROOT_PASSWORD: your_root_password # adjust as you need
+    ports:
+      - "8300:3306"                           # Adjust as needed
+    volumes:
+      - ./db-data:/var/lib/mysql/data         # feel free to customize
+    networks:
+      - your-network
+
+  pma:                                        # phpMyAdmin 
+    image: phpmyadmin/phpmyadmin
+    container_name: pma                       # Replace with your container name     
+    restart: unless-stopped
+    ports:
+      - "8200:80"                             # Adjust as needed
+    environment:
+      PMA_HOST: dbm                           # should the same as database service
+    networks:
+      - your-network                          # Replace with your network name
+
+networks:
+  your-network:                               # Replace with your network name
+    driver: bridge
