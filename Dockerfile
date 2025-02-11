@@ -27,4 +27,5 @@ RUN composer require laravel/octane
 RUN php artisan octane:install
 # RUN php artisan octane:install --no-interaction
 
-CMD ["php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=8000"]
+# CMD ["php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=8000"]
+CMD ["docker-php-entrypoint", "php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=8000"]
