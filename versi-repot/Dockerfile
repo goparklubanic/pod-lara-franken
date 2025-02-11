@@ -46,8 +46,8 @@ RUN apt-get install -y \
 #     && systemctl enable mariadb && systemctl start mariadb
 
 
-#set root password to assalamualaikum
-RUN echo "root:assalamualaikum" | chpasswd
+#set root password to something like #####
+#RUN echo "root:####" | chpasswd
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
