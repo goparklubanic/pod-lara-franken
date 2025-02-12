@@ -13,6 +13,7 @@ Frankenphp package is not available for Ms Windows yet, then you can install it 
 
 Optional step, creating .dockerignore file
 `cat .gitignore > .dockerignore`
+make sure **.env** is removed from .dockerignore file to avoid failure.
 
 
 ## CLONE THIS REPOSITORY
